@@ -28,7 +28,7 @@ import {
 import { compareCourses, Course } from "./model/course";
 
 import { compareLessons, Lesson } from "./model/lesson";
-import { CourseEntityService, CourseEntityName } from "./services/course-entity.service";
+import { CourseEntityService } from "./services/course-entity.service";
 import { CoursesResolver } from "./services/courses.resolver";
 import { CoursesDataService } from "./services/courses-data.service";
 import { LessonEntityService } from "./services/lesson-entity.service";
@@ -83,16 +83,8 @@ const entityMetadata: EntityMetadataMap = {
     ReactiveFormsModule,
     RouterModule.forChild(coursesRoutes)
   ],
-  declarations: [
-    HomeComponent,
-    CoursesCardListComponent,
-    CourseComponent
-  ],
-  exports: [
-    HomeComponent,
-    CoursesCardListComponent,
-    CourseComponent
-  ],
+  declarations: [HomeComponent, CoursesCardListComponent, CourseComponent],
+  exports: [HomeComponent, CoursesCardListComponent, CourseComponent],
   providers: [
     CoursesHttpService,
     CourseEntityService,
@@ -107,8 +99,8 @@ export class CoursesModule {
     private entityDataService: EntityDataService,
     private coursesDataService: CoursesDataService
   ) {
-    eds.registerMetadataMap( {entityMetadata: courseEntityMetadata} );
+    eds.registerMetadataMap({ entityMetadata: entityMetadata });
 
-    entityDataService.registerService(CourseEntityName, coursesDataService);
+    entityDataService.registerService("Course", coursesDataService);
   }
 }

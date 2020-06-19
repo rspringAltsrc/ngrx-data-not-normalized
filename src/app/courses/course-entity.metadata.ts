@@ -5,16 +5,16 @@ export const LessonEntityName = "Lesson";
 export const UserEntityName = "User";
 
 export const courseEntityMetadata: EntityMetadataMap = {
-  [CourseEntityName]: {
+  Course: {
     entityDispatcherOptions: { 
       optimisticAdd: true, 
       optimisticUpdate: true 
       }
   },
-  [LessonEntityName]: {
+  Lesson: {
 
   },
-[UserEntityName]: {
+  // [UserEntityName]: {
 
-}
+  // }
 }

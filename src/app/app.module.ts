@@ -19,7 +19,7 @@ import { RouterState, StoreRouterConnectingModule } from "@ngrx/router-store";
 
 import { EffectsModule } from "@ngrx/effects";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { reducers, appEntityMetadata } from "./reducers";
+import { reducers } from "./reducers";
 import { EntityDataModule } from "@ngrx/data";
 
 import { HttpRequestInterceptor } from "./interceptor";
@@ -50,7 +50,6 @@ const routes: Routes = [
     MatListModule,
     MatToolbarModule,
     StoreModule.forRoot(reducers, {
-      //metaReducers,
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true,

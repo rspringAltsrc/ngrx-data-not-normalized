@@ -1,13 +1,13 @@
-import {Injectable} from '@angular/core';
-import {EntityCollectionServiceBase, EntityCollectionServiceElementsFactory} from '@ngrx/data';
-import {Lesson} from '../model/lesson';
-import { LessonEntityName } from '../../reducers';
+import { Injectable } from "@angular/core";
+import {
+  EntityCollectionServiceBase,
+  EntityCollectionServiceElementsFactory
+} from "@ngrx/data";
+import { Lesson } from "../model/lesson";
 
 @Injectable()
 export class LessonEntityService extends EntityCollectionServiceBase<Lesson> {
-
-    constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-        super(LessonEntityName, serviceElementsFactory);
-    }
-
+  constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
+    super("Lesson", serviceElementsFactory);
+  }
 }
