@@ -1,20 +1,22 @@
+import { compareCourses } from "./model/course";
 import { EntityMetadataMap } from "@ngrx/data";
+import { compareLessons } from "./model/lesson";
 
 export const CourseEntityName = "Course";
 export const LessonEntityName = "Lesson";
 export const UserEntityName = "User";
 
 export const courseEntityMetadata: EntityMetadataMap = {
-  Course: {
-    entityDispatcherOptions: { 
-      optimisticAdd: true, 
-      optimisticUpdate: true 
-      }
+  [CourseEntityName]: {
+    sortComparer: compareCourses,
+    entityDispatcherOptions: {
+      optimisticUpdate: true
+    }
   },
-  Lesson: {
-
+  LessonEntityName: {
+    sortComparer: compareLessons
   },
-  // [UserEntityName]: {
-
-  // }
-}
+  UserEntityName: {
+    sortComparer: compareLessons
+  }
+};

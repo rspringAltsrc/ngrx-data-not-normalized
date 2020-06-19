@@ -4,10 +4,11 @@ import {
   EntityCollectionServiceElementsFactory
 } from "@ngrx/data";
 import { Course } from "../model/course";
+import { CourseEntityName } from "../course-entity.metadata";
 
 @Injectable()
 export class CourseEntityService extends EntityCollectionServiceBase<Course> {
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super("Course", serviceElementsFactory);
+    super(CourseEntityName, serviceElementsFactory);
   }
 }
