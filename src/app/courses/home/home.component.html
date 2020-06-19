@@ -1,0 +1,8 @@
+<h1>Course List</h1>
+
+      <courses-card-list (courseChanged)="reload()"
+        [courses]="beginnerCourses$ | async">
+
+      </courses-card-list>
+<h2>Course entities</h2>
+<pre style="overflow: auto; height: 30rem;">{{beginnerCourses$ | async | json }}</pre>
