@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {EntityCollectionServiceBase, EntityCollectionServiceElementsFactory} from '@ngrx/data';
 import {Course} from '../model/course';
+import { CourseEntityName } from '../../reducers';
 
-export const CourseEntityName = "Course";
 
 @Injectable()
 export class CourseEntityService

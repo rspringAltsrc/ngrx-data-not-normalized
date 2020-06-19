@@ -32,6 +32,7 @@ import { CourseEntityService, CourseEntityName } from "./services/course-entity.
 import { CoursesResolver } from "./services/courses.resolver";
 import { CoursesDataService } from "./services/courses-data.service";
 import { LessonEntityService } from "./services/lesson-entity.service";
+import { courseEntityMetadata } from "./course-entity.metadata";
 
 export const coursesRoutes: Routes = [
   {
@@ -106,7 +107,7 @@ export class CoursesModule {
     private entityDataService: EntityDataService,
     private coursesDataService: CoursesDataService
   ) {
-    eds.registerMetadataMap(entityMetadata);
+    eds.registerMetadataMap( {entityMetadata: courseEntityMetadata} );
 
     entityDataService.registerService(CourseEntityName, coursesDataService);
   }
