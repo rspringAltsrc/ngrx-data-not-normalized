@@ -2,9 +2,9 @@ import { compareCourses } from "./model/course";
 import { EntityMetadataMap } from "@ngrx/data";
 import { compareLessons } from "./model/lesson";
 
-export const CourseEntityName = 'Course';
-export const LessonEntityName = 'Lesson';
-export const UserEntityName = 'User';
+export const CourseEntityName = "Course";
+export const LessonEntityName = "Lesson";
+export const UserEntityName = "User";
 
 export const courseEntityMetadata: EntityMetadataMap = {
   [CourseEntityName]: {
@@ -13,7 +13,7 @@ export const courseEntityMetadata: EntityMetadataMap = {
       optimisticUpdate: true
     }
   },
-  Lesson: {
+  [LessonEntityName]: {
     sortComparer: compareLessons
   },
   [UserEntityName]: {
