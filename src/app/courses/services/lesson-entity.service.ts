@@ -9,6 +9,6 @@ import { LessonEntityName } from "../course-entity.metadata";
 @Injectable()
 export class LessonEntityService extends EntityCollectionServiceBase<Lesson> {
   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-    super(LessonEntityName, serviceElementsFactory);
+    super('Lesson', serviceElementsFactory);
   }
 }
