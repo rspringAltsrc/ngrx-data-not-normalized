@@ -43,9 +43,6 @@ export class HttpMockRequestInterceptor implements HttpInterceptor {
             status: 200,
             body: (element.json as any).default
           })
-        ).pipe(
-          // Simulate delay
-          delay(500)
         );
       }
     }
