@@ -3,7 +3,7 @@ import { DefaultDataService, HttpUrlGenerator } from "@ngrx/data";
 import { Course } from "../model/course";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, delay } from "rxjs/operators";
 import { CourseEntityName } from "../course-entity.metadata";
 
 @Injectable()

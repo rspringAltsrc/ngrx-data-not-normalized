@@ -1,8 +1,14 @@
-<h1>Course List</h1>
+<div *ngIf="loaded$ | async else loading">
+	<h1>Course List</h1>
 
-      <courses-card-list (courseChanged)="reload()"
-        [courses]="beginnerCourses$ | async">
+	<courses-card-list [courses]="courses$ | async">
+	</courses-card-list>
+	<h2>Course entities</h2>
+	<pre style="overflow: auto; height: 30rem;">{{courses$ | async | json }}</pre>
+</div>
 
-      </courses-card-list>
-<h2>Course entities</h2>
-<pre style="overflow: auto; height: 30rem;">{{beginnerCourses$ | async | json }}</pre>
+<ng-template #loading>
+  <div class="spinner-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

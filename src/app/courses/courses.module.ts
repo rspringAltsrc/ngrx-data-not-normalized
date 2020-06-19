@@ -29,7 +29,6 @@ import { compareCourses, Course } from "./model/course";
 
 import { compareLessons, Lesson } from "./model/lesson";
 import { CourseEntityService } from "./services/course-entity.service";
-import { CoursesResolver } from "./services/courses.resolver";
 import { CoursesDataService } from "./services/courses-data.service";
 import { LessonEntityService } from "./services/lesson-entity.service";
 import { courseEntityMetadata, CourseEntityName } from "./course-entity.metadata";
@@ -38,16 +37,16 @@ export const coursesRoutes: Routes = [
   {
     path: "",
     component: HomeComponent,
-    resolve: {
-      courses: CoursesResolver
-    }
+    // resolve: {
+    //   courses: CoursesResolver
+    // }
   },
   {
     path: ":courseUrl",
     component: CourseComponent,
-    resolve: {
-      courses: CoursesResolver
-    }
+    // resolve: {
+    //   courses: CoursesResolver
+    // }
   }
 ];
 
@@ -77,7 +76,6 @@ export const coursesRoutes: Routes = [
     CoursesHttpService,
     CourseEntityService,
     LessonEntityService,
-    CoursesResolver,
     CoursesDataService
   ]
 })

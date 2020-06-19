@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Course} from '../model/course';
 import {Observable} from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import {map} from 'rxjs/operators';
+import {map, tap, filter, first} from 'rxjs/operators';
 import { CourseEntityService } from '../services/course-entity.service';
 
 
@@ -14,7 +14,17 @@ import { CourseEntityService } from '../services/course-entity.service';
 })
 export class HomeComponent {
 
-    beginnerCourses$ = this.coursesService.entities$;
+    courses$ = this.coursesService.entities$;
+    
+    loaded$ = this.coursesService.loaded$.pipe(
+      tap(loaded => {
+        if (!loaded) {
+          this.coursesService.getAll();
+        }
+      }),
+      filter(loaded => !!loaded),
+      first()
+    )
 
     constructor(
       private coursesService: CourseEntityService) {
