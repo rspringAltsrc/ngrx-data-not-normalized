@@ -32,6 +32,7 @@ import { CourseEntityService } from "./services/course-entity.service";
 import { CoursesDataService } from "./services/courses-data.service";
 import { LessonEntityService } from "./services/lesson-entity.service";
 import { courseEntityMetadata, CourseEntityName } from "./course-entity.metadata";
+import { CourseCacheDispatcherService } from "./services/course-cache-dispatcher.service";
 
 export const coursesRoutes: Routes = [
   {
@@ -83,10 +84,13 @@ export class CoursesModule {
   constructor(
     private eds: EntityDefinitionService,
     private entityDataService: EntityDataService,
-    private coursesDataService: CoursesDataService
+    private coursesDataService: CoursesDataService,
+    private courseCacheDispatcherService: CourseCacheDispatcherService
   ) {
         eds.registerMetadataMap(courseEntityMetadata);
 
         entityDataService.registerService(CourseEntityName, coursesDataService);
+
+        courseCacheDispatcherService.init();
   }
 }

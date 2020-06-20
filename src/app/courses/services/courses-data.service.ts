@@ -29,21 +29,6 @@ export class CoursesDataService extends DefaultDataService<Course> {
     store: Store,
   ) {
     super(CourseEntityName, http, httpUrlGenerator, courseDataServiceConfig);
-    this.subscribeToHub();
-  }
-  signalRAction = {
-    type: "incomingBroadcast",
-    entityName: CourseEntityName,
-    entityOp: EntityOp.ADD_ONE
-  };
-
-  subscribeToHub() {
-
-    this.store.dispatch(this.signalRAction);
-    // setTimeout(() => {
-    //   this.store.dispatch(this.signalRAction);
-    //   console.log("hi");
-    // }, 5000);
   }
   getAll(): Observable<Course[]> {
     return super.getAll().pipe(map(cs => cs.map(c => this.mapCourse(c))));
