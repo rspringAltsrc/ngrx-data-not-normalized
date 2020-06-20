@@ -12,7 +12,6 @@ export class CourseCacheDispatcherService {
     readonly entityDispatcherFactory: EntityDispatcherFactory
   ) {
     this.d = entityDispatcherFactory.create(CourseEntityName);
-    this.init();
   }
 
   init(): void {
