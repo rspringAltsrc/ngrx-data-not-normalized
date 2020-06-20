@@ -15,6 +15,14 @@ import { delay, map } from "rxjs/operators";
 export class CourseCacheDispatcherService {
   entDispatcher: EntityDispatcher<Course>;
   subscriptions = new Subscription();
+
+  mockSignalRBroadcast = of({
+    category: "lala",
+    description: "Hello world",
+    longDescription: "This was just (simulated) pushed from SignalR",
+    id: 234234
+  }).pipe(delay(5000));
+
   constructor(readonly entityDispatcherFactory: EntityDispatcherFactory) {
     this.entDispatcher = entityDispatcherFactory.create(CourseEntityName);
   }
@@ -24,17 +32,9 @@ export class CourseCacheDispatcherService {
   }
 
   subscribeToSignalR() {
-    const addOne = of({
-      category: "lala",
-      description: "Hello world",
-      longDescription: "This was just (simulated) pushed from SignalR",
-      id: 234234
-    })
-      .pipe(
-        delay(5000),
-        map(e => this.entDispatcher.addOneToCache(e))
-      )
-      .subscribe();
+    const addOne = this.mockSignalRBroadcast.subscribe(e => {
+      this.entDispatcher.addOneToCache(e);
+    });
 
     this.subscriptions.add(addOne);
   }
