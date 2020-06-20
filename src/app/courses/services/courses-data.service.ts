@@ -24,9 +24,9 @@ const courseDataServiceConfig: DefaultDataServiceConfig = {
 @Injectable()
 export class CoursesDataService extends DefaultDataService<Course> {
   constructor(
-    store: Store,
     http: HttpClient,
-    httpUrlGenerator: HttpUrlGenerator
+    httpUrlGenerator: HttpUrlGenerator,
+    store: Store,
   ) {
     super(CourseEntityName, http, httpUrlGenerator, courseDataServiceConfig);
     this.subscribeToHub();
@@ -38,10 +38,12 @@ export class CoursesDataService extends DefaultDataService<Course> {
   };
 
   subscribeToHub() {
-    setTimeout(() => {
-      this.store.dispatch(this.signalRAction);
-      console.log("hi");
-    }, 5000);
+
+    this.store.dispatch(this.signalRAction);
+    // setTimeout(() => {
+    //   this.store.dispatch(this.signalRAction);
+    //   console.log("hi");
+    // }, 5000);
   }
   getAll(): Observable<Course[]> {
     return super.getAll().pipe(map(cs => cs.map(c => this.mapCourse(c))));
