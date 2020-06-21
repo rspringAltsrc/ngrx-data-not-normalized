@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Course } from "../model/course";
 import {
-  EntityDispatcherBase,
   EntityDispatcherFactory,
   EntityDispatcher
 } from "@ngrx/data";
@@ -38,7 +37,7 @@ export class CourseCacheDispatcherService {
 
     this.subscriptions.add(addOne);
   }
-  unSubcribeAll() {
+  unSubscribeAll() {
     this.subscriptions.unsubscribe();
   }
 }
