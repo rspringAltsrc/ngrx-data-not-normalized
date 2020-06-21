@@ -32,11 +32,11 @@ export class HomeComponent {
 
   addPrefilledCourse() {
     const prefilledCourse: Course = {
+      id: 2657,
       category: "nothin",
       description: "Manually Added",
       longDescription:
         "This is a prefilled course manually added by click using all of the data services.",
-      id: 2657
     };
 
     this.coursesService.add(prefilledCourse, { skip: true });
