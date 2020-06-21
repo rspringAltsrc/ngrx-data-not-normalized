@@ -12,7 +12,7 @@ import { delay, map } from "rxjs/operators";
   providedIn: "root"
 })
 export class CourseCacheDispatcherService {
-  entDispatcher: EntityDispatcher<Course>;
+  courseDispatcher: EntityDispatcher<Course>;
   subscriptions = new Subscription();
 
   mockSignalRBroadcast = of({
@@ -23,7 +23,7 @@ export class CourseCacheDispatcherService {
   }).pipe(delay(5000));
 
   constructor(readonly entityDispatcherFactory: EntityDispatcherFactory) {
-    this.entDispatcher = entityDispatcherFactory.create(CourseEntityName);
+    this.courseDispatcher = entityDispatcherFactory.create(CourseEntityName);
   }
 
   init(): void {
@@ -32,7 +32,7 @@ export class CourseCacheDispatcherService {
 
   subscribeToSignalR() {
     const addOne = this.mockSignalRBroadcast.subscribe(e => {
-      this.entDispatcher.addOneToCache(e);
+      this.courseDispatcher.addOneToCache(e);
     });
 
     this.subscriptions.add(addOne);

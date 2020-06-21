@@ -10,7 +10,6 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map, delay } from "rxjs/operators";
 import { CourseEntityName } from "../course-entity.metadata";
-import { Store } from "@ngrx/store";
 
 const courseDataServiceConfig: DefaultDataServiceConfig = {
   // This is where the api server root path can be set
@@ -25,8 +24,7 @@ const courseDataServiceConfig: DefaultDataServiceConfig = {
 export class CoursesDataService extends DefaultDataService<Course> {
   constructor(
     http: HttpClient,
-    httpUrlGenerator: HttpUrlGenerator,
-    store: Store,
+    httpUrlGenerator: HttpUrlGenerator
   ) {
     super(CourseEntityName, http, httpUrlGenerator, courseDataServiceConfig);
   }
